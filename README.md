@@ -15,3 +15,7 @@ Our application is a Science-as-a-Service platform for customers to order automa
 reviewing results. The instructions will identify a function (ex: incubate, seal, transfer, spectrophotometry) and the table for that function will store detailed parameters for its type (ie. duration for incubating vs volume for transfer fluid). Customers will select from a list of predetermined protocols, but will be able to modify the aforementioned parameters for a given instruction (with certain factors limited by the admin based on equipment features). For example, an instruction
 might specify heating a sample and the customer could specify temperature and duration. The application code will generate “random” results by transforming a standard dataset using the customer’s supplied parameters. Administrators will be able to perform all the standard CRUD operations on the laboratory and equipment in addition to their activation status, thereby constraining which laboratory can process an order.  Equipment and laboratories attributes will derive from existing
 commercial cloud labs in conjunction with internet searches for a given category of equipment. The largest challenges will stem from automated database updates (processing & scheduling orders and assigning laboratories) as well as building the relationship between instruction sets and their corollary sub-typed function tables.
+
+# ER Diagram
+
+<img src="ER Diagram.png" alt="Drawing" style="width: 400px;"/>
