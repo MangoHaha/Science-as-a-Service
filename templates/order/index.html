@@ -1,0 +1,42 @@
+<table class="ui celled very compact table">
+  <thead>
+    <tr class="center aligned">
+      <th>Protocol</th>
+      <th>Status</th>
+      <th>Placed date</th>
+      <th>Comments</th>
+      <th>Paid</th>
+      {% if session['user_admin'] %}
+      <th>User</th>
+      <th>Actions</th>
+      {% endif %}
+    </tr>
+  </thead>
+  {% for order in orders %}
+  <tr class="center aligned">
+    <td>{{order['protocol_id']}}</td>
+    <td>{{order['status']}}</td>
+    <td>{{order['placed_date'].date()}}</td>
+    <td  class="center aligned">{{order['comments']}}</td>
+    <td class="center aligned" id="order_{{order['protocol_id']}}_paid">
+    {% if session['user_admin'] %}
+      {% if order['paid'] %}
+        {% with user_id = order['user_id'], protocol_id = order['protocol_id'] %}
+        {% include 'order/paid/unpaid.html' %}
+        {% endwith %}
+      {% else %}
+        {% with user_id = order['user_id'], protocol_id = order['protocol_id'] %}
+        {% include 'order/paid/paid.html' %}
+        {% endwith %}
+      {% endif %}
+    {% else %}
+      <i class="{{ 'green checkmark ' if order['paid'] else 'red cancel' }} icon"></i>
+    {% endif %}
+    </td>
+    {% if session['user_admin'] %}
+    <td>{{order['user_id']}}</td>
+    <td></td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>

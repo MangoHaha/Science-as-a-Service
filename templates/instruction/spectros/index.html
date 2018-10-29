@@ -1,0 +1,39 @@
+<h4>Spectrophotometric Steps</h4>
+<table class="ui celled very compact table">
+  <thead>
+    <tr class="center aligned">
+      <th class="one wide">Sequence</th>
+      <th>Type</th>
+      <th>Type Characteristics</th>
+      <th>Temperature</th>
+      <th>Incubate Before</th>
+      <th>Wells</th>
+      <th>Sample</th>
+      <th class="two wide">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="spectro-list">
+  {% for spectro in spectros %}
+    {% with
+      protocol_id = spectro['protocol_id'],
+      sequence = spectro['sequence'],
+      duration = spectro['duration'],
+      temperature = spectro['temperature'],
+      type = spectro['type'],
+      wells = spectro['wells'],
+      amplitude = spectro['amplitude'],
+      excitation = spectro['excitation'],
+      gain = spectro['gain'],
+      wavelength = spectro['wavelength'],
+      emission = spectro['emission'],
+      orbital = spectro['orbital'],
+      num_flashes = spectro['num_flashes'],
+      sample_name = spectro['sample_name'],
+      order_status = spectro['order_status'],
+      approved = spectro['approved']
+    %}
+      {% include "instruction/spectros/_spectros.html"%}
+    {% endwith %}
+  {% endfor %}
+  </tbody>
+</table>

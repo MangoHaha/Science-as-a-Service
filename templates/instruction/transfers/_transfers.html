@@ -1,0 +1,59 @@
+<tr id='sequence-{{sequence}}' class="center aligned">
+  <td>{{sequence}}</td>
+  <td>{{type}}</td>
+  <td>{{volume}}</td>
+  <td>
+    {% if aspirate_speed or dispense_speed %}
+      {% if aspirate_speed %}
+        Aspirate: {{aspirate_speed}} rpm<br />
+      {% endif %}
+      {% if dispense_speed %}
+        Dispense: {{dispense_speed}} rpm
+      {% endif %}
+    {% else %}
+      Default
+    {% endif %}
+  </td>
+  <td>{{wells}}</td>
+  <td>{{rows}}</td>
+  <td>{{columns}}</td>
+  <td>
+    {% if mix_speed_before or mix_volume_before or mix_repetition_before %}
+      {% if mix_repetition_before %}
+      Repition: {{mix_repetition_before}}<br />
+      {% endif %}
+      {% if mix_speed_before %}
+       Speed: {{mix_speed_before}} rpm<br />
+      {% endif %}
+      {% if mix_volume_before %}
+       Volume: {{mix_volume_before}}
+      {% endif %}
+    {% else %}
+      No Mixing
+    {% endif %}
+  </td>
+  <td>
+    {% if mix_speed_after or mix_volume_after or mix_repetition_after %}
+      {% if mix_repetition_after %}
+      Repition: {{mix_repetition_after}}<br />
+      {% endif %}
+      {% if mix_speed_after %}
+       Speed: {{mix_speed_after}} rpm<br />
+      {% endif %}
+      {% if mix_volume_after %}
+       Volume: {{mix_volume_after}}
+      {% endif %}
+    {% else %}
+      No Mixing
+    {% endif %}
+  </td>
+  <td>{{from_sample_name}}</td>
+  <td>{{to_sample_name}}</td>
+  <td>
+    {% if order_status == 'created' or session['user_admin'] %}
+    <a class='ui edit equipment icon tiny button {{"disabled" if approved}}' id="sequence-{{sequence}}-edit" data-js='get' href='/protocol/{{protocol_id}}/instruction/{{sequence}}/transfers' data-tooltip='Edit transfer step {{sequence}}'>
+      <i class='edit icon'></i>
+    </a>
+    {% endif %}
+  </td>
+</tr>

@@ -1,0 +1,19 @@
+<tr class="center aligned" id='lab-{{id}}'>
+  <td>{{id}}</td>
+  <td class='center aligned'>$ {{usage_fee}}</td>
+  <td><div class='ui star disable safety-level rating' data-rating='{{safety_level}}' data-max-rating='3'></div></td>
+  <td>{{address}}</td>
+  <td>{{name}}</td>
+  <td>{{area}}</td>
+  <td class='center aligned'>
+    <i class='{{ 'green' if active else 'red' }} circle notched icon'></i>
+  </td>
+  <td>
+    <a class='ui edit lab icon tiny orange button' data-js='get' href='/labs/{{id}}/edit' data-tooltip='Edit lab {{id}}'>
+      <i class='edit icon'></i>
+    </a>
+    <a class='ui delete lab icon tiny red button' data-js='delete' href='/labs/{{id}}' data-tooltip='Delete lab {{id}}' data-confirm='Are you sure?'>
+      <i class='remove icon'></i>
+    </a>
+  </td>
+</tr>

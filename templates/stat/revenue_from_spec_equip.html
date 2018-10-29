@@ -1,0 +1,23 @@
+<table class="ui celled very compact table">
+  <thead>
+    <tr class="center aligned">
+      <th>Id</th>
+      <th>Manufacturer</th>
+      <th>Serial_number</th>
+      <th>Function</th>
+      <th>Operations_performed</th>
+      <th>Theoretical_revenue</th>
+    </tr>
+  </thead>
+  {% for stat in stat %}
+  <tr>
+    <td>{{stat['id']}}</td>
+    <td>{{stat['manufacturer']}}</td>
+    <td>{{stat['serial_number']}}</td>
+    <td>{{stat['function']}}</td>
+    <td>{{stat['operations_performed']}}</td>
+    <td>{{stat['theoretical_revenue']}}</td>
+  </tr>
+  {% endfor %}
+  <td>total is {{rev}}</td>
+</table>

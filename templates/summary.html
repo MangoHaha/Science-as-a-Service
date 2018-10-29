@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+<div class="ui middle aligned center aligned grid" style="padding-top: 100px">
+  <div class="column">
+    <h1 class="ui blue image header">
+      <i class="cloud icon"></i>
+      <div class="content">Welcome to Cumulus Laboratories</div>
+    </h1>
+  </div>
+</div>
+{% endblock %}

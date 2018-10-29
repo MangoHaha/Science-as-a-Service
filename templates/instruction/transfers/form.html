@@ -1,0 +1,102 @@
+<form route='{{route}}' class='ui instruction transfers form' id='instruction-form'>
+  <div class='four fields'>
+    <div class='required field'>
+      <label for='transfers_volume'>Volume</label>
+      <div class="ui right labeled input">
+        <input id='transfers_volume' min='1' max='1000' name='transfers[volume]' step='1' type='number' value='{{volume or 1}}'>
+        <div class="ui basic label">uL</div>
+      </div>
+    </div>
+    <div class='required field'>
+      <label for='transfers_type'>Type</label>
+      <select id='transfers_type' name='transfers[type]' class='ui dropdown'>
+        <option value='pipette'>Pipette</option>
+        <option value='stamp'>Stamp</option>
+      </select>
+    </div>
+    <div class='required field'>
+      <label for='transfers_from_sample_id'>From Sample</label>
+      <select id='transfers_from_sample_id' name='transfers[from_sample_id]' class='ui dropdown'>
+      {% for sample in samples %}
+        <option value='{{sample["id"]}}'>{{sample["name"]}}</option>
+      {% endfor %}
+      </select>
+    </div>
+    <div class='required field'>
+      <label for='transfers_to_sample_id'>To Sample</label>
+      <select id='transfers_to_sample_id' name='transfers[to_sample_id]' class='ui dropdown'>
+      {% for sample in samples %}
+        <option value='{{sample["id"]}}'>{{sample["name"]}}</option>
+      {% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class='two fields'>
+    <div class='field'>
+      <label for='transfers_aspirate_speed'>Aspirate Speed</label>
+      <div class="ui right labeled input">
+        <input id='transfers_aspirate_speed' name='transfers[aspirate_speed]' min='1' max='1000' step='1' type='number' value='{{aspirate_speed}}'>
+        <div class="ui basic label"><sup>uL</sup>&frasl;<sub>sec</sub></div>
+      </div>
+    </div>
+    <div class='field'>
+      <label for='transfers_dispense_speed'>Dispense Speed</label>
+      <div class="ui right labeled input">
+        <input id='transfers_dispense_speed' name='transfers[dispense_speed]' min='1' max='1000' step='1' type='number' value='{{dispense_speed}}'>
+        <div class="ui basic label"><sup>uL</sup>&frasl;<sub>sec</sub></div>
+      </div>
+    </div>
+  </div>
+  <div class='three fields'>
+    <div class='field'>
+      <label for='transfers_wells'>Wells</label>
+      <input id='transfers_wells' name='transfers[wells]' type='text' value='{{wells}}'>
+    </div>
+    <div class='field'>
+      <label for='transfers_rows'>Rows</label>
+      <input id='transfers_rows' name='transfers[rows]' min='1' max='12' step='1' type='number' value='{{rows or 1}}'>
+    </div>
+    <div class='field'>
+      <label for='transfers_columns'>Columns</label>
+      <input id='transfers_columns' name='transfers[columns]' min='1' max='12' step='1' type='number' value='{{columns or 1}}'>
+    </div>
+  </div>
+  <h4 class="ui dividing header">Mix</h4>
+  <div class='inline fields'>
+    <label class='one wide'>Before</label>
+    <div class='four wide field'>
+      <div class="ui right labeled input">
+        <input id='transfers_mix_speed_before' name='transfers[mix_speed_before]' min='1' max='12' step='1' type='number' value='{{mix_speed_before}}' placeholder='Speed'>
+        <div class="ui basic label"><sup>uL</sup>&frasl;<sub>sec</sub></div>
+      </div>
+    </div>
+    <div class='four wide field'>
+      <input id='transfers_mix_repetition_before' name='transfers[mix_repetition_before]' min='1' max='12' step='1' type='number' value='{{mix_repetition_before}}' placeholder='Repetition'>
+    </div>
+    <div class='four wide field'>
+      <div class="ui right labeled input">
+        <input id='transfers_mix_volume_before' name='transfers[mix_volume_before]' min='1' max='12' step='1' type='number' value='{{mix_volume_before}}' placeholder='Volume'>
+        <div class="ui basic label">uL</div>
+      </div>
+    </div>
+  </div>
+  <div class='inline fields'>
+    <label class='one wide'>&nbsp;&nbsp;&nbsp;After</label>
+    <div class='four wide field'>
+      <div class="ui right labeled input">
+        <input id='transfers_mix_speed_after' name='transfers[mix_speed_after]' min='1' max='12' step='1' type='number' value='{{mix_speed_after}}' placeholder='Speed'>
+        <div class="ui basic label"><sup>uL</sup>&frasl;<sub>sec</sub></div>
+      </div>
+    </div>
+    <div class='four wide field'>
+      <input id='transfers_mix_repetition_after' name='transfers[mix_repetition_after]' min='1' max='12' step='1' type='number' value='{{mix_repetition_after}}' placeholder='Repetition'>
+    </div>
+    <div class='four wide field'>
+      <div class="ui right labeled input">
+        <input id='transfers_mix_volume_after' name='transfers[mix_volume_after]' min='1' max='12' step='1' type='number' value='{{mix_volume_after}}' placeholder='Volume'>
+        <div class="ui basic label">uL</div>
+      </div>
+    </div>
+  </div>
+  <div class='ui error message'></div>
+</form>

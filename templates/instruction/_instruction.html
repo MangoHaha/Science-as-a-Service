@@ -1,0 +1,22 @@
+<tr id='instruction-{{instruction["sequence"]}}'>
+  <td class="center aligned">{{instruction['sequence']}}</td>
+  <td>{{instruction['function'].capitalize()}}</td>
+  <td>{{instruction['description']}}</td>
+  <td>{{instruction['equipment_id']}}</td>
+  <td class="center aligned">
+    <i class="{{ 'green checkmark' if instruction['complete'] else 'red cancel' }} icon"></i>
+  </td>
+  <td class="center aligned" id="instruction_{{instruction['sequence']}}_approve">
+    {% if not instruction['order_status'] == 'created' %}
+      <i class="{{ 'green checkmark ' if instruction['approved'] else 'red cancel' }} icon"></i>
+    {% elif instruction['approved'] %}
+      {% with protocol_id = instruction['protocol_id'], sequence = instruction['sequence'] %}
+      {% include 'instruction/approve/unapprove.html' %}
+      {% endwith %}
+    {% else %}
+      {% with protocol_id = instruction['protocol_id'], sequence = instruction['sequence'] %}
+      {% include 'instruction/approve/approve.html' %}
+      {% endwith %}
+    {% endif %}
+  </td>
+</tr>

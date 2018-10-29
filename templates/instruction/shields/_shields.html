@@ -1,0 +1,22 @@
+<tr id='sequence-{{sequence}}' class="center aligned">
+  <td>{{sequence}}</td>
+  <td>
+    {% if seal and not reverse %}
+      Seal
+    {% elif seal and reverse %}
+      Unseal
+    {% elif not seal and not reverse %}
+      Cover
+    {% else %}
+      Uncover
+    {% endif %}
+  </td>
+  <td>{{sample_name}}</td>
+  <td>
+    {% if order_status == 'created' or session['user_admin'] %}
+    <a class='ui edit equipment icon tiny button {{"disabled" if approved}}' id="sequence-{{sequence}}-edit" data-js='get' href='/protocol/{{protocol_id}}/instruction/{{sequence}}/shields' data-tooltip='Edit shield step {{sequence}}'>
+      <i class='edit icon'></i>
+    </a>
+    {% endif %}
+  </td>
+</tr>

@@ -1,0 +1,27 @@
+<table class="ui celled very compact table">
+  <thead>
+    <tr class="center aligned">
+      <th>Step</th>
+      <th>Function</th>
+      <th>Description</th>
+      <th>Equipment_id</th>
+      <th>Complete</th>
+      <th>Approved</th>
+    </tr>
+  </thead>
+  {% for instruction in instructions %}
+    {% include "instruction/_instruction.html" %}
+  {% endfor %}
+</table>
+{% if order['status'] == 'created' and
+  (order['user_id'] == session['user_id'] or session['user_admin']) %}
+<a class='ui approve order green fluid button {{"disabled" if not order_approvable}}' id="approve_order_button" href='{{url_for("approve_order", protocol_id=order["protocol_id"])}}'>
+  Approve Order
+</a>
+{% endif %}
+<div class="ui instruction modal" id="instruction-dialog">
+  <i class="close icon"></i>
+  <div class="instruction modal header"></div>
+  <div class="instruction modal content"></div>
+  <div class="instruction modal actions"></div>
+</div>

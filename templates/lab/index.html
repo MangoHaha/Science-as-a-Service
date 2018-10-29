@@ -1,0 +1,29 @@
+<a class="ui new lab fluid green button" data-js="get" href="/labs/new">Build a lab</a>
+<table class="ui celled table">
+  <thead>
+    <tr class="center aligned">
+      <th>Id</th>
+      <th>Usage Fee</th>
+      <th>Safety Level</th>
+      <th>Address</th>
+      <th>Name</th>
+      <th>Area</th>
+      <th>Active</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="lab-list">
+  {% for lab in labs %}
+    {% with id = lab['id'], usage_fee = lab['usage_fee'], address = lab['address'],
+      safety_level = lab['safety_level'], name = lab['name'], area = lab['area'], active = lab['active'] %}
+      {% include "lab/_lab.html"%}
+    {% endwith %}
+  {% endfor %}
+  </tbody>
+</table>
+<div class="ui lab modal" id="lab-dialog">
+  <i class="close icon"></i>
+  <div class="lab modal header"></div>
+  <div class="lab modal content"></div>
+  <div class="lab modal actions"></div>
+</div>

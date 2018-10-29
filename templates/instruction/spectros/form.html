@@ -1,0 +1,98 @@
+<form route='{{route}}' class='ui instruction spectros form' id='instruction-form'>
+  <div class='four fields'>
+    <div class='required field'>
+      <label for='spectros_temperature'>Temperature</label>
+      <div class="ui right labeled input">
+        <input id='spectros_temperature' name='spectros[temperature]' type='number' value='{{temperature}}' min=20 max=120 step=1>
+        <div class="ui basic label">&deg;C</div>
+      </div>
+    </div>
+    <div class='required field'>
+      <label for='spectros_type'>Type</label>
+      <select id='spectros_type' name='spectros[type]' onChange='showSpectroTypeFields()' class='ui dropdown spectro type'>
+        <option value='absorbance'>Absorbance</option>
+        <option value='fluorescence'>Fluorescence</option>
+        <option value='luminescence'>Luminescence</option>
+      </select>
+    </div>
+    <div class='required field'>
+      <label for='spectros_sample_id'>Sample</label>
+      <select id='spectros_sample_id' name='spectros[sample_id]' class='ui dropdown'>
+        {% for sample in samples %}
+        <option value='{{sample["id"]}}'>{{sample["name"]}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class='field'>
+      <label for='spectros_wells'>Wells</label>
+      <input id='spectros_wells' name='spectros[wells]' type='text' value='{{wells}}'>
+    </div>
+  </div>
+  <div name='absorbance_fields'>
+    <h4 class="ui dividing header">Absorbance Specific</h4>
+    <div class='two fields'>
+      <div class='field'>
+        <label for='spectros_wavelength'>Wavelength</label>
+        <div class="ui right labeled input">
+          <input id='spectros_wavelength' name='spectros[wavelength]' type='number' value='{{wavelength}}' min=300 max=1000 step=1>
+          <div class="ui basic label">nm</div>
+        </div>
+      </div>
+      <div class='field' name='common_fields'>
+        <label for='spectros_abs_num_flashes'>Number of Flashes</label>
+        <input id='spectros_abs_num_flashes' name='spectros[abs_num_flashes]' type='number' value='{{num_flashes}}' step=1 min=1 max=100 >
+      </div>
+    </div>
+  </div>
+
+  <div name='fluorescence_fields'>
+    <h4 class="ui dividing header">Fluoresence Specific</h4>
+    <div class='four fields'>
+      <div class='required field'>
+        <label for='spectros_excitation'>Excitation</label>
+        <div class="ui right labeled input">
+          <input id='spectros_excitation' name='spectros[excitation]' type='number' value='{{excitation}}' min=230 max=600 step=1 >
+          <div class="ui basic label">nm</div>
+        </div>
+      </div>
+      <div class='required field'>
+        <label for='spectros_emission'>Emission</label>
+        <div class="ui right labeled input">
+          <input id='spectros_emission' name='spectros[emission]' type='number' value='{{emission}}' min=330 max=850 step=1 >
+          <div class="ui basic label">nm</div>
+        </div>
+      </div>
+      <div class='field' name='common_fields'>
+        <label for='spectros_fluor_num_flashes'>Number of Flashes</label>
+        <input id='spectros_fluor_num_flashes' name='spectros[fluor_num_flashes]' type='number' value='{{num_flashes}}' step=1 min=1 max=100 >
+      </div>
+      <div class='field'>
+        <label for='spectros_gain'>Gain</label>
+        <input id='spectros_gain' name='spectros[gain]' type='number' value='{{gain}}' min=0.002 max=1.000 step=0.001 >
+      </div>
+    </div>
+  </div>
+
+  <h4 class="ui dividing header">Optional Incubation Steps</h4>
+  <div class='three fields'>
+    <div class='field'>
+      <label for='spectros_duration'>Duration</label>
+      <input id='spectros_duration' name='spectros[duration]' type='text' value='{{duration or ""}}'>
+    </div>
+    <div class='field'>
+      <label for='spectros_amplitude'>Shaking Amplitude</label>
+      <div class="ui right labeled input">
+        <input id='spectros_amplitude' name='spectros[amplitude]' type='number' value='{{amplitude}}' min=1 max=6 step=1>
+        <div class="ui basic label">mm</div>
+      </div>
+    </div>
+    <div class='field'>
+      <label for='spectros_orbital'>Orbital?</label>
+      <div class='ui toggle checkbox'>
+        <input id='spectros_orbital' name='spectros[orbital]' type='checkbox' value='true' {{"checked='checked'" if orbital}}>
+        <input name='spectros[orbital]' type='hidden' value='false'>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

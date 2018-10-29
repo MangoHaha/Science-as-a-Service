@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+<div class="ui middle aligned center aligned grid" style="padding-top: 100px">
+  <div class="column">
+    <h2 class="ui blue image header">
+      <i class="cloud icon"></i>
+      <div class="content">Log-in to your account</div>
+    </h2>
+    <form class="ui large login form" method="POST" action="{{ url_for('login') }}">
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="username" placeholder="Enter your email address">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password">
+          </div>
+        </div>
+        <div class="actions">
+          <button class="ui fluid large blue button" type="submit">Log in</button>
+        </div>
+        <div class="ui error message">
+        </div>
+      </div>
+    </form>
+    <!-- <div class="ui message">
+      New to us? <a href="#">Sign Up</a>
+    </div> -->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+<tr id='sequence-{{sequence}}' class="center aligned">
+  <td>{{sequence}}</td>
+  <td>{{type.capitalize()}}</td>
+  <td class="left aligned">
+  {% if type == 'absorbance'%}
+    Wavelength: {{wavelength}} nm<br />
+    Flash No. {{num_flashes}}
+  {% elif type == 'fluorescence' %}
+    Excitation: {{excitation}} nm<br />
+    Emission: {{emission}} nm<br />
+    Number of Flashes: {{num_flashes}}<br />
+    Gain: {{gain}}
+  {% else %}
+    N/A
+  {% endif %}
+  </td>
+  <td>{{temperature}} &deg;C</td>
+  <td class="left aligned">
+    {% if duration %}
+      Duration: {{duration}}<br />
+      {% if amplitude %}
+      Shaking: {{amplitude}} mm<br />
+      Orbital: {{orbital}}
+      {% else %}
+      No shaking
+      {% endif %}
+    {% else %}
+      None
+    {% endif %}
+  </td>
+  <td>{{wells}}</td>
+  <td>{{sample_name}}</td>
+  <td>
+    {% if order_status == 'created' or session['user_admin']%}
+    <a class='ui edit equipment icon tiny button {{"disabled" if approved}}' id="sequence-{{sequence}}-edit" data-js='get' href='/protocol/{{protocol_id}}/instruction/{{sequence}}/spectros' data-tooltip='Edit spectrophotometric step {{sequence}}'>
+      <i class='edit icon'></i>
+    </a>
+    {% endif %}
+  </td>
+</tr>

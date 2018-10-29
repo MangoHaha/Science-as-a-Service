@@ -1,0 +1,35 @@
+<table class="ui celled table">
+  <thead>
+    <tr class="center aligned">
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Join Date</th>
+      <th>Active</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  {% for user in users %}
+  <tr>
+  <tr class="center aligned">
+    <td>{{user['id']}}</td>
+    <td>{{user['name']}}</td>
+    <td>{{user['email']}}</td>
+    <td>{{user['join_date'].date()}}</td>
+    <td class="center aligned" id="user_{{user['id']}}_active">
+      {% if user['active'] %}
+        {% with user_id = user['id'] %}
+        {% include 'user/active/deactivate.html' %}
+        {% endwith %}
+      {% else %}
+        {% with user_id = user['id'] %}
+        {% include 'user/active/activate.html' %}
+        {% endwith %}
+      {% endif %}
+    </td>
+    <td class="center aligned">
+      <i class="{{ 'green checkmark' if user['admin'] else 'red cancel' }} icon"></i>
+    </td>
+  </tr>
+  {% endfor %}
+</table>

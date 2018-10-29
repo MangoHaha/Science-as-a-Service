@@ -1,0 +1,21 @@
+<h4>Shield Steps</h4>
+<table class="ui celled very compact table">
+  <thead>
+    <tr class="center aligned">
+      <th class="one wide">Sequence</th>
+      <th>Action</th>
+      <th>Sample</th>
+      <th class="two wide">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="shield-list">
+  {% for shield in shields %}
+    {% with protocol_id = shield['protocol_id'], sequence = shield['sequence'],
+      seal = shield['seal'], reverse = shield['reverse'], sample_name = shield['sample_name'],
+      order_status = shield['order_status'],
+      approved = shield['approved'] %}
+      {% include "instruction/shields/_shields.html"%}
+    {% endwith %}
+  {% endfor %}
+  </tbody>
+</table>

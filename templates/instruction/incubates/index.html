@@ -1,0 +1,25 @@
+<h4>Incubates Steps</h4>
+<table class="ui celled very compact table">
+  <thead>
+    <tr class="center aligned">
+      <th class="one wide">Sequence</th>
+      <th>Duration</th>
+      <th>Temperature</th>
+      <th>Shaking</th>
+      <th>CO<sub>2</sub> Percent</th>
+      <th>Sample</th>
+      <th class="two wide">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="incubate-list">
+  {% for incubate in incubates %}
+    {% with protocol_id = incubate['protocol_id'], sequence = incubate['sequence'],
+      duration = incubate['duration'], temperature = incubate['temperature'],
+      shaking = incubate['shaking'], co2_percent = incubate['co2_percent'],
+      sample_name = incubate['sample_name'], order_status = incubate['order_status'],
+      approved = incubate['approved'] %}
+      {% include "instruction/incubates/_incubates.html"%}
+    {% endwith %}
+  {% endfor %}
+  </tbody>
+</table>

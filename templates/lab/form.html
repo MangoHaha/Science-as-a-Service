@@ -1,0 +1,40 @@
+<form route='{{route}}' class='ui lab form' id='lab-form'>
+  <div class="two fields">
+    <div class='required field field'>
+      <label for='lab_name'>Name</label>
+      <input id='lab_name' name='lab[name]' placeholder='Enter the lab name' type='text' value='{{name}}'>
+    </div>
+    <div class='required field field'>
+      <label for='lab_address'>Address</label>
+      <input id='lab_address' name='lab[address]' placeholder='Enter the lab address' type='text' value='{{address}}'>
+    </div>
+  </div>
+  <div class='three fields'>
+    <div class='field'>
+      <label for='lab_usage_fee'>Usage Fee</label>
+      <div class='ui left icon input'>
+        <input id='lab_usage_fee' min='1' name='lab[usage_fee]' step='1' type='number' value='{{usage_fee or 1}}'>
+        <i class='dollar icon'></i>
+      </div>
+    </div>
+    <div class='field'>
+      <label for='lab_area'>Area</label>
+      <input id='lab_area' min='1' name='lab[area]' step='1' type='number' value='{{area or 1}}'>
+    </div>
+    <div class='field'>
+      <label for='lab_safety_level'>Safety Level</label>
+      <div class='ui left icon input'>
+        <input id='lab_safety_level' min='1' max='3' name='lab[safety_level]' step='1' value='{{safety_level or 1}}' type='number'>
+        <i class='bomb icon'></i>
+      </div>
+    </div>
+  </div>
+  <div class='inline field field'>
+    <div class='ui toggle checkbox'>
+      <input id='lab_active' name='lab[active]' type='checkbox' value='true' {{"checked='checked'" if active}}>
+      <input name='lab[active]' type='hidden' value='false'>
+      <label for='lab_active'>Active</label>
+    </div>
+  </div>
+  <div class='ui error message'></div>
+</form>

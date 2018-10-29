@@ -1,0 +1,35 @@
+<table class="ui celled very compact table">
+  <thead>
+    <tr class="center aligned">
+      {% if session['user_admin'] %}
+      <th>Id</th>
+      <th>lab_id</th>
+      <th>Template</th>
+      {% endif %}
+      <th>Name</th>
+      <th>Description</th>
+      <th>Results data</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  {% for protocol in protocols %}
+  <tr class="center aligned">
+    {% if session['user_admin'] %}
+    <td>{{protocol['id']}}</td>
+    <td>{{protocol['lab_id']}}</td>
+    <td>{{protocol['template']}}</td>
+    {% endif %}
+    <td>{{protocol['name']}}</td>
+    <td class="left aligned">{{protocol['description']}}</td>
+    <td>{{protocol['results_data']}}</td>
+    <td>
+        <a class='ui order green tiny button' href='{{url_for("new_protocol_order", template_id=protocol["id"])}}'>{{ "Order" if protocol['template'] else "Reorder" }}</a>
+        <a class='ui show protocol icon tiny button'
+            href='{{url_for("show_order", protocol_id=protocol["id"])}}' data-tooltip='Show order for {{protocol["id"]}}'
+            data-confirm='Are you sure?'>
+          <i class='magnify icon'></i>
+        </a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>

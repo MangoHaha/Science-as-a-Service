@@ -1,0 +1,48 @@
+<h4>Transfers Steps</h4>
+<table class="ui celled very compact table">
+  <thead>
+    <tr class="center aligned">
+     <th class="one wide">Sequence</th>
+     <th>Type</th>
+     <th>Volume</th>
+     <th>Speeds</th>
+     <th>Wells</th>
+     <th>Rows</th>
+     <th>Columns</th>
+     <th>Mix Before</th>
+     <th>Mix After</th>
+     <th>From Sample</th>
+     <th>To Sample</th>
+     <th class="two wide">Actions</th>
+    </tr>
+  </thead>
+  <tbody id="transfer-list">
+  {% for transfer in transfers %}
+    {% with protocol_id = transfer['protocol_id'],
+            sequence = transfer['sequence'],
+            type = transfer['type'],
+            volume = transfer['volume'],
+            aspirate_speed = transfer['aspirate_speed'],
+            dispense_speed = transfer['dispense_speed'],
+            size = transfer['size'],
+            wells = transfer['wells'],
+            rows = transfer['rows'],
+            columns = transfer['columns'],
+            mix_speed_before = transfer['mix_speed_before'],
+            mix_repetition_before = transfer['mix_repetition_before'],
+            mix_volume_before = transfer['mix_volume_before'],
+            mix_speed_after = transfer['mix_speed_after'],
+            mix_repetition_after = transfer['mix_repetition_after'],
+            mix_volume_after = transfer['mix_volume_after'],
+            from_sample_id = transfer['from_sample_id'],
+            to_sample_id = transfer['to_sample_id'],
+            from_sample_name = transfer['from_sample_name'],
+            to_sample_name = transfer['to_sample_name'],
+            order_status = transfer['order_status'],
+            approved = transfer['approved']
+    %}
+      {% include "instruction/transfers/_transfers.html"%}
+    {% endwith %}
+  {% endfor %}
+  </tbody>
+</table>

@@ -1,0 +1,15 @@
+<tr id='sequence-{{sequence}}' class="center aligned">
+  <td>{{sequence}}</td>
+  <td>{{duration}}</td>
+  <td>{{temperature}} &deg;C</td>
+  <td>{{shaking}}</td>
+  <td>{{co2_percent}}</td>
+  <td>{{sample_name}}</td>
+  <td>
+    {% if order_status == 'created' or session['user_admin'] %}
+    <a class='ui edit equipment icon tiny button  {{"disabled" if approved}}' id="sequence-{{sequence}}-edit" data-js='get' href='/protocol/{{protocol_id}}/instruction/{{sequence}}/incubates' data-tooltip='Edit incubation step {{sequence}}'>
+      <i class='edit icon'></i>
+    </a>
+    {% endif %}
+  </td>
+</tr>

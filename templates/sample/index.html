@@ -1,0 +1,23 @@
+<table class="ui celled very compact table">
+  <thead>
+    <tr class="center aligned">
+      <th>Id</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Volume</th>
+      <th>Storage Temperature</th>
+      <th>Wells</th>
+    </tr>
+  </thead>
+  {% for sample in samples %}
+  <tr>
+  <tr class="center aligned">
+    <td>{{sample['id']}}</td>
+    <td>{{sample['name']}}</td>
+    <td>{{sample['type']}}</td>
+    <td>{{sample['volume']}}</td>
+    <td>{{sample['storage_temperature']}}</td>
+    <td>{{sample['wells']}}</td>
+  </tr>
+  {% endfor %}
+</table>

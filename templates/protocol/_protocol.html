@@ -1,0 +1,10 @@
+<h3>Protocol {{protocol['name']}}</h3>
+<h5>{{protocol['description']}}</h5>
+<a class='ui order green fluid button' href='{{url_for("new_protocol_order", template_id=protocol["id"])}}'>
+  Create a new protocol using this template
+</a>
+{% include 'instruction/index.html' %}
+{% include 'instruction/shields/index.html' %}
+{% include 'instruction/incubates/index.html' %}
+{% include 'instruction/spectros/index.html' %}
+{% include 'instruction/transfers/index.html' %}

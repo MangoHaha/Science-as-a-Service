@@ -1,0 +1,26 @@
+<table class="ui celled very compact table">
+  <thead>
+    <tr class="center aligned">
+       {% for (key, value) in stat[0].items() %}
+          <th>{{key}}</th>
+       {% endfor %}
+    </tr>
+  </thead>
+
+  {% for stat_item in stat %}
+    <tr>
+      {%for (key,value) in stat_item.items() %}
+        <td>{{value}}</td>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table>
+
+<div class="ui horizontal statistic">
+  <div class="label">
+    Total Revenue:
+  </div>
+  <div class="value">
+    {{total}}
+  </div>
+</div>

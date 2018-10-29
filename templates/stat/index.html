@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block body %}
+<head>
+<style>
+p.uppercase {
+    text-transform: uppercase;
+}
+
+p.lowercase {
+    text-transform: lowercase;
+}
+
+p.capitalize {
+    text-transform: capitalize;
+}
+</style>
+</head>
+<body>
+
+<table class="ui celled very compact table">
+  <thead>
+    <tr class="center aligned">
+       {% for (key, value) in stat[0].items() %}
+          <th><p class="uppercase">{{key}}</p></th>
+       {% endfor %}
+    </tr>
+  </thead>
+
+  {% for stat_item in stat %}
+    <tr>
+      {%for (key,value) in stat_item.items() %}
+	{% if key == "revenue" or key == "order_revenue" or
+ key == "lab_fees" or key == "equipment_fees" or key == "theoretical_revenue"   %}
+          <td>${{value}}</td>
+	{% else %}
+          <td>{{value}}</td>
+	{% endif %}
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table>
+
+<div class="ui horizontal statistic">
+  <div class="label">
+    Total Revenue:
+  </div>
+  <div class="value">
+    ${{total}}
+  </div>
+</div>
+{% endblock %}

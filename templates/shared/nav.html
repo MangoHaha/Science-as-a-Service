@@ -1,0 +1,45 @@
+<div class="ui fixed inverted menu">
+  <div class="ui container">
+    <div class="header item"><i class="cloud icon"></i>Cumulus Labs</div>
+    {% if session.logged_in %}
+      {% if session['user_admin'] %}
+        <a href="{{ url_for('admin') }}" class="item">Home</a>
+      {% else %}
+        <a href="{{ url_for('home') }}" class="item">Home</a>
+      {% endif %}
+       <div class="ui simple dropdown item">
+          Template Protocols<i class="dropdown icon"></i>
+          <div class="menu">
+            {% for protocol in g.nav_protocol_list %}
+            <a href="{{ url_for('show_protocol', protocol_id=protocol['id']) }}" class="item">{{protocol['name']}}</a>
+            {% endfor %}
+          </div>
+        </div>
+      {% if session['user_admin'] %}
+       <div class="ui simple dropdown item">
+          Stats<i class="dropdown icon"></i>
+          <div class="menu">
+           <a href="{{ url_for('stat_func', type="theoretical_equipment_revenue") }}" class="item">Equipment Revenue</a>
+           <a href="{{ url_for('stat_func', type="paid_order_revenue") }}" class="item">Paid Order Revenue</a>
+          <div class="ui simple dropdown item">Equipment Op. Revenue<i class="dropdown icon"></i>
+            <div class="menu">
+              <a href="{{ url_for('stat_func', type="transfer_revenue") }}" class="item">Liquid Handling</a>
+              <a href="{{ url_for('stat_func', type="shield_revenue") }}" class="item">Shielding</a>
+              <a href="{{ url_for('stat_func', type="spectrophotometric_revenue") }}" class="item">Analysis</a>
+            </div>
+          </div>
+          </div>
+        </div>
+      {% endif %}
+    <div class="right menu">
+      <div class="item">Welcome {{ session['user_name']}}!</div>
+      <a href="{{ url_for('logout') }}" class="item">Log out</a>
+    </div>
+    {% else %}
+    <div class="right menu">
+      <a href="{{ url_for('login') }}" class="item">Log in</a>
+    </div>
+    {% endif %}
+    </div>
+( </div>
+</div>

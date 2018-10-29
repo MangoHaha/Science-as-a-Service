@@ -1,0 +1,27 @@
+<form route='{{route}}' class='ui instruction shields form' id='instruction-form'>
+  <div class='three fields'>
+    <div class='inline field'>
+      <div class='ui toggle checkbox'>
+        <input id='shields_seal' name='shields[seal]' type='checkbox' value='true' {{"checked='checked'" if seal}}>
+        <input name='shields[seal]' type='hidden' value='false'>
+        <label for='shields_seal'>Seal</label>
+      </div>
+    </div>
+    <div class='inline field'>
+      <div class='ui toggle checkbox'>
+        <input id='shields_reverse' name='shields[reverse]' type='checkbox' value='true' {{"checked='checked'" if reverse}}>
+        <input name='shields[reverse]' type='hidden' value='false'>
+        <label for='shields_reverse'>Reverse</label>
+      </div>
+    </div>
+    <div class='inline required field'>
+      <label for='shields_sample_id'>Sample</label>
+      <select id='shields_sample_id' name='shields[sample_id]' class='ui dropdown'>
+      {% for sample in samples %}
+        <option value='{{sample["id"]}}'>{{sample["name"]}}</option>
+      {% endfor %}
+      </select>
+    </div>
+  </div>
+  <div class='ui error message'></div>
+</form>

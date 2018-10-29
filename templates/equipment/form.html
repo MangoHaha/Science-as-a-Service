@@ -1,0 +1,64 @@
+<form route='{{route}}' class='ui equipment form' id='equipment-form'>
+  <div class='three fields'>
+    <div class='required field'>
+      <label for='equipment_manufacturer'>Manufacturer</label>
+      <input id='equipment_manufacturer' name='equipment[manufacturer]' type='text' value='{{manufacturer}}' placeholder='Equipment Manufacturer'>
+    </div>
+    <div class='required field'>
+      <label for='equipment_serial_number'>Serial Number</label>
+      <input id='equipment_serial_number' name='equipment[serial_number]' type='text' value='{{serial_number}}' placeholder='Equipment Serial Number'>
+    </div>
+    <div class='required field'>
+      <label for='equipment_function'>Function</label>
+      <select id='equipment_function' name='equipment[function]' class='ui dropdown'>
+        <option value='transfer'>Transfer</option>
+        <option value='shield'>Shield</option>
+        <option value='incubate'>Incubate</option>
+        <option value='spectrophotometry'>Spectrophotometry</option>
+      </select>
+    </div>
+  </div>
+  <div class='two fields'>
+    <div class='required field'>
+      <label for='equipment_lab_id'>Lab</label>
+      <select id='equipment_lab_id' name='equipment[lab_id]' class='ui dropdown'>
+      {% for lab in labs %}
+        <option value='{{lab["id"]}}'>{{lab["name"]}}</option>
+      {% endfor %}
+      </select>
+    </div>
+    <div class='required field field'>
+      <label for='equipment_mac_address'>Mac Address</label>
+      <input id='equipment_mac_address' name='equipment[mac_address]' placeholder='Format: ac:21:53:ca:88:a0' type='text' value='{{mac_address}}'>
+    </div>
+  </div>
+  <div class='field'>
+    <label for='equipment_description'>Description</label>
+    <input id='equipment_description' name='equipment[description]' type='text' value='{{description}}' rows= 2 placeholder='Enter a description for this piece of equipment'>
+  </div>
+  <div class='three fields'>
+    <div class='field'>
+      <label for='equipment_usage_fee'>Usage Fee</label>
+      <div class='ui left icon input'>
+        <input id='equipment_usage_fee' min='0' name='equipment[usage_fee]' step='0.01' type='number' value='{{usage_fee or 1}}'>
+        <i class='dollar icon'></i>
+      </div>
+    </div>
+    <div class='field'>
+      <label for='equipment_date_purchased'>Date Purchased</label>
+      <input id='equipment_date_purchased' name='equipment[date_purchased]' type='date' value='{{date_purchased}}'>
+    </div>
+    <div class='field'>
+      <label for='equipment_last_inspection'>Last Inspection</label>
+      <input id='equipment_last_inspection' name='equipment[last_inspection]' type='date' value='{{last_inspection}}'>
+    </div>
+  </div>
+  <div class='inline field field'>
+    <div class='ui toggle checkbox'>
+      <input id='equipment_active' name='equipment[active]' type='checkbox' value='true' {{"checked='checked'" if active}}>
+      <input name='equipment[active]' type='hidden' value='false'>
+      <label for='equipment_active'>Active</label>
+    </div>
+  </div>
+  <div class='ui error message'></div>
+</form>

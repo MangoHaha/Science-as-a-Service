@@ -1,0 +1,30 @@
+<tr id='equipment-{{id}}'>
+<tr class="center aligned">
+  <td>{{id}}</td>
+  <td>
+    {{lab_name or "None"}}<br /><br />
+    {{mac_address}}
+  </td>
+  <td class='left aligned'>
+    <h5>{{function.capitalize()}}</h5>
+    {{description}}
+  </td>
+  <td class='left aligned'>
+    Mfg: {{manufacturer}}<br />
+    Serial: {{serial_number}}<br />
+    Purchased: {{date_purchased}}<br />
+    Inspected: {{last_inspection}}
+  </td>
+  <td class='center aligned'>$ {{usage_fee}}</td>
+  <td class='center aligned'>
+    <i class='{{ 'green' if active else 'red' }} circle notched icon'></i>
+  </td>
+  <td>
+    <a class='ui edit equipment icon tiny orange button' data-js='get' href='/equipment/{{id}}/edit' data-tooltip='Edit equipment {{id}}'>
+      <i class='edit icon'></i>
+    </a>
+    <a class='ui delete equipment icon tiny red button' data-js='delete' href='/equipment/{{id}}' data-tooltip='Delete equipment {{id}}' data-confirm='Are you sure?'>
+      <i class='remove icon'></i>
+    </a>
+  </td>
+</tr>

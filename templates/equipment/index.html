@@ -1,0 +1,31 @@
+<a class="ui new equipment green fluid button" data-js="get" href="/equipment/new">Add Equipment</a>
+<table class="ui celled very compact table">
+  <thead>
+    <tr class="center aligned">
+      <th>Id</th>
+      <th class="three wide">Lab</th>
+      <th class="six wide">Function &amp; Description</th>
+      <th>Identifiers</th>
+      <th>Usage Fee</th>
+      <th>Active</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="equipment-list">
+  {% for equip in equips %}
+    {% with id = equip['id'], lab_id = equip['lab_id'], mac_address = equip['mac_address'],
+      function = equip['function'], description = equip['description'],
+      serial_number = equip['serial_number'], manufacturer = equip['manufacturer'],
+      date_purchased = equip['date_purchased'], usage_fee = equip['usage_fee'],
+      active = equip['active'], lab_name = equip['lab_name'], last_inspection = equip['last_inspection'] %}
+      {% include "equipment/_equipment.html"%}
+    {% endwith %}
+  {% endfor %}
+  </tbody>
+</table>
+<div class="ui equipment modal" id="equipment-dialog">
+  <i class="close icon"></i>
+  <div class="equipment modal header"></div>
+  <div class="equipment modal content"></div>
+  <div class="equipment modal actions"></div>
+</div>
